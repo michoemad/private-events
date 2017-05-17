@@ -3,4 +3,18 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def create
+		@user = User.new(params.require(:user).permit(:username,:email))
+		puts @user.valid?
+		
+		if @user.valid?
+			@user.save
+			flash[:notice] = "Success!"
+		else
+			flash[:notice] = "Failure"
+		end
+		redirect_to new_user_url
+
+	end
+
 end
