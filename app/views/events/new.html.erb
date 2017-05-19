@@ -1,0 +1,7 @@
+<h1>Create Event </h1>
+<%= form_for @event do |f| %>
+<%= f.label :name%><%= f.text_field :name%><br><br><%=f.label :time%> <%=f.date_select :time%><br>
+<br>
+<%= f.select("creator_id", User.all.collect {|p| [ p.username, p.id ] }) %><br><br>
+<%= f.submit %> 
+<% end %>

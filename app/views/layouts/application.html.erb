@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if flash[:notice] %>
+<p> <%=flash[:notice] %> </p><br>
+<% end %>
+<% if session[:user_id] %> <%@cur_user =User.find(session[:user_id])%> <p>Logged in as <%=@cur_user.username %> <% end %>
 <%= yield %>
 
 </body>

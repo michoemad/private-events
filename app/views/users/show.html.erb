@@ -4,4 +4,29 @@
 <p>Username: <%=@user.username %></p>
 
 <p>Email: <%=@user.email %></p> 
+
 </div>
+<h3> Created Events </h3>
+<ul>
+<% for event in @events %>
+<li> <%= event.name %> </li>
+<%end%>
+
+</ul>
+
+<br><h3>Previously Attended: </h3>
+<ul>
+<% for e in @user.prev_events %>
+	<li><%=link_to e.name, event_url(e)%></li>
+<%end%>
+
+</ul>
+
+<br><h3>Upcoming Events: </h3>
+<ul>
+<% for e in @user.upcoming_events %>
+	<li><%=link_to e.name, event_url(e)%></li>
+<%end%>
+
+</ul>
+<%= link_to "Back to Users List", users_path %>

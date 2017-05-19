@@ -1,0 +1,16 @@
+<h1>Event #<%=@event.id%> Details</h1>
+<p> Name: <%=@event.name%> </p>
+<p> Date: <%=@event.time.strftime("%d/%m/%y")%> </p>
+<p> Creator: <%=link_to @event.creator.username, user_url(@event.creator) %></p>
+
+<h2>Attendees</h2>
+<ul>
+<% for u in @event.attendees%>
+<li><%=link_to u.username, user_url(u)%></li>
+<%end%>
+</ul>
+<% if session[:user_id] %>
+<% curuser=User.find(session[:user_id]) %>
+<%= link_to "Attend", event_attend_url(@event.id) %><br>
+<%end%>
+<%= link_to "Back to List", events_url %>

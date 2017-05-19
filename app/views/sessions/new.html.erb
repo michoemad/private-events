@@ -1,0 +1,12 @@
+<% if flash[:notice] %><%= flash[:notice] %><%end%>
+
+<%= form_for(:session) do |f|%>
+<%= f.label :name %>
+<%= f.text_field :name %> <%= f.submit %>
+
+
+<% end %>
+<% if session[:user_id] %>
+<%= link_to 'Log out',login_path,
+            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+<% end %>

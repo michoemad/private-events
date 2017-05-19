@@ -1,6 +1,4 @@
-<% if flash[:notice] %>
-<p> <%=flash[:notice] %> </p>
-<% end %>
+
 <%= form_for @user, url: {action: "create"}, html: {method: "post"} do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %> <br>
